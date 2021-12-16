@@ -1,0 +1,34 @@
+plugins {
+	id("android-application-convection")
+}
+
+android {
+	kotlinOptions {
+		jvmTarget = '1.8'
+		useIR = true
+	}
+	buildFeatures {
+		compose true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion Compose.version
+		kotlinCompilerVersion Kotlin.version
+	}
+	packagingOptions {
+		resources {
+			excludes += '/META-INF/{AL2.0,LGPL2.1}'
+		}
+	}
+}
+
+dependencies {
+	implementation AndroidX.core
+	implementation AndroidX.appcompat
+	implementation AndroidX.lifecycleRuntime
+	implementation AndroidX.material
+
+	implementation Compose.ui
+	implementation Compose.material
+	implementation Compose.toolingPreview
+	implementation Compose.activity
+}
