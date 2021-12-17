@@ -3,6 +3,7 @@
 	package="ru.endroad.carcost">
 
 	<application
+		android:name=".application.App"
 		android:icon="@mipmap/ic_launcher"
 		android:label="CarCost"
 		android:roundIcon="@mipmap/ic_launcher_round"

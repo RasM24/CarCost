@@ -22,6 +22,9 @@ android {
 }
 
 dependencies {
+	implementation project(":component-compose")
+	implementation project(":component-navigation")
+
 	implementation AndroidX.core
 	implementation AndroidX.appcompat
 	implementation AndroidX.lifecycleRuntime
@@ -31,4 +34,7 @@ dependencies {
 	implementation Compose.material
 	implementation Compose.toolingPreview
 	implementation Compose.activity
+
+	implementation Koin.core
+	implementation Koin.android
 }
