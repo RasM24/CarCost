@@ -29,3 +29,4 @@ rootProject.name = "CarCost"
 includeBuild("gradle-convection")
 
 include(":app")
+include(":component-compose")
