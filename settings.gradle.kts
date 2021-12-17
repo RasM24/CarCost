@@ -30,3 +30,4 @@ includeBuild("gradle-convection")
 
 include(":app")
 include(":component-compose")
+include(":component-navigation")

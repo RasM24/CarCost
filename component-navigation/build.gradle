@@ -1,0 +1,8 @@
+plugins {
+	id("kotlin-jvm-convection")
+}
+
+dependencies {
+
+	implementation Coroutine.core
+}
