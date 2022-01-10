@@ -38,18 +38,21 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.collect
+import ru.endroad.library.compose.util.ContextListener
+import ru.endroad.library.compose.util.UnitListener
+import ru.endroad.library.compose.util.ValueListener
 
 @Composable
 fun AutofillTextField(
 	modifier: Modifier = Modifier,
 	value: TextFieldValue,
-	onValueChange: (TextFieldValue) -> Unit,
-	dischargeErrorState: () -> Unit,
+	onValueChange: ValueListener<TextFieldValue>,
+	dischargeErrorState: UnitListener,
 	enabled: Boolean = true,
 	textStyle: TextStyle = LocalTextStyle.current,
-	label: @Composable (() -> Unit)? = null,
-	helper: @Composable (BoxScope.() -> Unit)? = null,
-	leadingIcon: @Composable (() -> Unit)? = null,
+	label: @Composable UnitListener? = null,
+	helper: @Composable ContextListener<BoxScope>? = null,
+	leadingIcon: @Composable UnitListener? = null,
 	suggestions: List<String>,
 	isError: Boolean = false,
 	visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -75,7 +78,7 @@ fun AutofillTextField(
 			label = label,
 			helper = helper,
 			leadingIcon = leadingIcon,
-			trailingIcon =  { Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "choose") },
+			trailingIcon = { Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "choose") },
 			isError = isError,
 			visualTransformation = visualTransformation,
 			keyboardOptions = keyboardOptions,
@@ -108,17 +111,17 @@ fun AutofillTextField(
 fun MaterialTextField(
 	modifier: Modifier = Modifier,
 	value: TextFieldValue,
-	onValueChange: (TextFieldValue) -> Unit,
-	dischargeErrorState: (() -> Unit)? = null,
+	onValueChange: ValueListener<TextFieldValue>,
+	dischargeErrorState: UnitListener? = null,
 	enabled: Boolean = true,
 	readOnly: Boolean = false,
 	textStyle: TextStyle = LocalTextStyle.current,
-	label: @Composable (() -> Unit)? = null,
-	helper: @Composable (BoxScope.() -> Unit)? = null,
-	counter: @Composable (BoxScope.() -> Unit)? = null,
+	label: @Composable UnitListener? = null,
+	helper: @Composable ContextListener<BoxScope>? = null,
+	counter: @Composable ContextListener<BoxScope>? = null,
 	maxCountSymbols: Int? = null,
-	leadingIcon: @Composable (() -> Unit)? = null,
-	trailingIcon: @Composable (() -> Unit)? = null,
+	leadingIcon: @Composable UnitListener? = null,
+	trailingIcon: @Composable UnitListener? = null,
 	isError: Boolean = false,
 	visualTransformation: VisualTransformation = VisualTransformation.None,
 	keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
@@ -187,7 +190,7 @@ fun MaterialTextField(
 private fun Decoration(
 	contentColor: Color,
 	typography: TextStyle,
-	content: @Composable () -> Unit
+	content: @Composable UnitListener
 ) {
 	CompositionLocalProvider(
 		LocalContentColor provides contentColor,

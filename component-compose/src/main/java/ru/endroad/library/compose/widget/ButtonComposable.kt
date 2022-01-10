@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
+import ru.endroad.library.compose.util.UnitListener
 
 @Composable
 fun OutlinedTextButton(
@@ -47,7 +48,7 @@ fun OutlinedTextButton(
 @Composable
 fun UnelevatedTextButton(
 	text: String,
-	onClick: () -> Unit,
+	onClick: UnitListener,
 	modifier: Modifier = Modifier,
 	enabled: Boolean = true,
 	interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -70,7 +71,7 @@ fun UnelevatedTextButton(
 )
 
 @Composable
-fun NavigationIcon(onClick: () -> Unit) {
+fun navigationIcon(onClick: () -> Unit): @Composable UnitListener = {
 	IconButton(onClick = onClick) {
 		Icon(
 			imageVector = Icons.Filled.ArrowBack,

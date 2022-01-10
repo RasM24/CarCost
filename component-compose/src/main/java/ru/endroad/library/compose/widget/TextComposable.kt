@@ -5,6 +5,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import ru.endroad.library.compose.theme.MaterialColor.Gray
 import ru.endroad.library.compose.theme.s600
@@ -34,6 +35,20 @@ fun PrimaryText(
 	modifier = modifier,
 	color = color,
 	style = MaterialTheme.typography.body1,
+	textAlign = textAlign,
+)
+
+@Composable
+fun PrimaryBoldText(
+	text: String,
+	modifier: Modifier = Modifier,
+	color: Color = Color.Unspecified,
+	textAlign: TextAlign? = null,
+) = Text(
+	text = text,
+	modifier = modifier,
+	color = color,
+	style = MaterialTheme.typography.body1.copy(fontWeight = FontWeight.Bold),
 	textAlign = textAlign,
 )
 

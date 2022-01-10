@@ -3,6 +3,7 @@ package ru.endroad.library.compose.theme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
+import ru.endroad.library.compose.theme.MaterialColor.Gray
 import ru.endroad.library.compose.theme.MaterialColor.BlueGray
 import ru.endroad.library.compose.theme.MaterialColor.Brown
 import ru.endroad.library.compose.theme.MaterialColor.Red
@@ -14,7 +15,8 @@ internal val LightThemeColors = lightColors(
 	secondary = BlueGray.s600,
 	secondaryVariant = BlueGray.s800,
 	onSecondary = Color.White,
-	error = Red.alternative400
+	error = Red.alternative400,
+	background = Gray.s100,
 )
 
 internal val DarkThemeColors = darkColors(
@@ -24,5 +26,5 @@ internal val DarkThemeColors = darkColors(
 	secondary = BlueGray.s700,
 	secondaryVariant = BlueGray.s900,
 	onSecondary = Color.White,
-	error = Red.alternative100
+	error = Red.alternative100,
 )
