@@ -13,3 +13,13 @@ fun FlatTopBar(
 	title = { Text(text = title) },
 	navigationIcon = navigationClick?.let { navigationIcon(onClick = navigationClick) },
 )
+
+fun flatTopBar(
+	title: String,
+	navigationClick: UnitListener? = null,
+) = @Composable {
+	TopAppBar(
+		title = { Text(text = title) },
+		navigationIcon = navigationClick?.let { navigationIcon(onClick = navigationClick) },
+	)
+}
