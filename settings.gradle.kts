@@ -29,5 +29,7 @@ rootProject.name = "CarCost"
 includeBuild("gradle-convection")
 
 include(":app")
+include(":feature-catalog")
 include(":feature-hub")
+include(":shared-autopart")
 include(":component-compose")
