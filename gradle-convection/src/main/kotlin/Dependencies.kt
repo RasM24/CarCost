@@ -13,14 +13,6 @@ object AndroidX {
 	const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
 }
 
-object Koin {
-
-	const val version = "3.1.2"
-
-	const val core = "io.insert-koin:koin-core:$version"
-	const val android = "io.insert-koin:koin-android:$version"
-}
-
 object Coroutine {
 
 	const val version = "1.5.0"
@@ -38,4 +30,5 @@ object Compose {
 	const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:$version"
 	const val activity = "androidx.activity:activity-compose:1.4.0"
 	const val iconsExtended = "androidx.compose.material:material-icons-extended:$version"
+	const val navigation = "androidx.navigation:navigation-compose:2.4.0-rc01"
 }

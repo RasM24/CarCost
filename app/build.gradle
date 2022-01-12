@@ -36,4 +36,5 @@ dependencies {
 	implementation Compose.material
 	implementation Compose.toolingPreview
 	implementation Compose.activity
+	implementation Compose.navigation
 }
