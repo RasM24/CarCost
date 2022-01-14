@@ -30,6 +30,7 @@ includeBuild("gradle-convection")
 
 include(":app")
 include(":feature-catalog")
+include(":feature-order-list")
 include(":feature-hub")
 include(":shared-autopart")
 include(":component-compose")
