@@ -29,6 +29,12 @@ fun Honda(number: String): PartNumber =
 
 fun LynxAuto(number: String): PartNumber =
 	PartNumber(Manufacturer("LynxAuto"), number)
+
+fun Shell(number: String): PartNumber =
+	PartNumber(Manufacturer("Shell Helix"), number)
+
+fun Vic(number: String): PartNumber =
+	PartNumber(Manufacturer("VIC"), number)
 //endregion
 
 //region Date Extension
