@@ -1,5 +1,5 @@
 plugins {
-	id("android-application-convection")
+	id("android-library-convection")
 }
 
 android {
@@ -23,20 +23,10 @@ android {
 
 dependencies {
 	implementation project(":component-compose")
-	implementation project(":feature-catalog")
-	implementation project(":feature-hub")
-	implementation project(':feature-order-list')
-	implementation project(":shared-autopart")
 	implementation project(':shared-order')
-
-	implementation AndroidX.core
-	implementation AndroidX.appcompat
-	implementation AndroidX.lifecycleRuntime
-	implementation AndroidX.material
+	implementation project(':shared-autopart')
 
 	implementation Compose.ui
 	implementation Compose.material
 	implementation Compose.toolingPreview
-	implementation Compose.activity
-	implementation Compose.navigation
 }
