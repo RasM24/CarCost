@@ -24,8 +24,8 @@ fun StepwgnServiceComposable(onBackClicked: () -> Unit) {
 fun CivicServiceComposable(onBackClicked: () -> Unit) {
 	ServiceListComposable(
 		title = "Сервисная книжка [Civic]",
-		services = listOf(),
-		orders = listOf(),
+		services = HardcoreDataCivic.serviceBook.services,
+		orders = HardcoreDataCivic.serviceBook.purchasedPart,
 		onBackClicked = onBackClicked,
 	)
 }
