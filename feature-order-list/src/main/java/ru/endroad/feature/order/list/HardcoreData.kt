@@ -10,8 +10,8 @@ import ru.endroad.feature.order.detail.dsl.Mobil
 import ru.endroad.feature.order.detail.dsl.NGK
 import ru.endroad.feature.order.detail.dsl.RUB
 import ru.endroad.feature.order.detail.dsl.Reinz
+import ru.endroad.feature.order.detail.dsl.ServiceBookDsl
 import ru.endroad.feature.order.detail.dsl.km
-import ru.endroad.feature.order.detail.dsl.serviceBook
 import ru.endroad.feature.order.detail.entity.Autoatlant
 import ru.endroad.feature.order.detail.entity.Denderov
 import ru.endroad.feature.order.detail.entity.Exist
@@ -29,7 +29,7 @@ private val stepwgnFilterAir = Part("Фильтр воздушный", MannFilte
 private val stepwgnSensorOilPressure = Part("Датчик давления масла", Bosch("0 986 345 009"))        //oem "37240-PT0-023"
 private val technicalFluidsMobil1 = Part("Моторное масло", Mobil("0w-30"))
 
-internal val stepwgnServiceBook = serviceBook {
+internal val stepwgnServiceBook = ServiceBookDsl {
 	service(mileage = 351400.km, date = 25 January 2021, workPay = Denderov(2000.RUB)) {
 		Exist("К3-0002934") part stepwgnGasketValveCoverKit boughtFor 1_714.RUB
 		Exist("К3-0002934") part stepwgnIgnitionSparkPlug boughtFor 1_316.RUB
