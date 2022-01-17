@@ -14,8 +14,8 @@ import ru.endroad.library.compose.widget.flatTopBar
 fun StepwgnServiceComposable(onBackClicked: () -> Unit) {
 	ServiceListComposable(
 		title = "Сервисная книжка [StepWGN]",
-		services = stepwgnServiceBook.services,
-		orders = stepwgnServiceBook.purchasedPart,
+		services = HardcoreDataStepwgn.serviceBook.services,
+		orders = HardcoreDataStepwgn.serviceBook.purchasedPart,
 		onBackClicked = onBackClicked,
 	)
 }
