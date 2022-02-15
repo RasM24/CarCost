@@ -29,11 +29,13 @@ fun PrimaryText(
 	text: String,
 	modifier: Modifier = Modifier,
 	color: Color = Color.Unspecified,
+	maxLines: Int = Int.MAX_VALUE,
 	textAlign: TextAlign? = null,
 ) = Text(
 	text = text,
 	modifier = modifier,
 	color = color,
+	maxLines = maxLines,
 	style = MaterialTheme.typography.body1,
 	textAlign = textAlign,
 )

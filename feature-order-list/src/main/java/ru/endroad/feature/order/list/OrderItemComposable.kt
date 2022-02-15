@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
@@ -76,9 +77,9 @@ private fun OrderItemComposable(order: Order) =
 @Composable
 fun GroupedCardItem(title: String, explanation: String) {
 	Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-		PrimaryText(text = title)
+		PrimaryText(modifier = Modifier.weight(10f), text = title, maxLines = 2)
 		Spacer(modifier = Modifier.weight(1f))
-		PrimaryText(text = explanation)
+		PrimaryText(modifier = Modifier.wrapContentWidth(), text = explanation)
 	}
 }
 

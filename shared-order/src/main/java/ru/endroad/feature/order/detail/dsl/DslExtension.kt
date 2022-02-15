@@ -35,6 +35,33 @@ fun Shell(number: String): PartNumber =
 
 fun Vic(number: String): PartNumber =
 	PartNumber(Manufacturer("VIC"), number)
+
+fun Febest(number: String): PartNumber =
+	PartNumber(Manufacturer("Febest"), number)
+
+fun KYB(number: String): PartNumber =
+	PartNumber(Manufacturer("KYB"), number)
+
+fun NSK(number: String): PartNumber =
+	PartNumber(Manufacturer("NSK"), number)
+
+fun CTR(number: String): PartNumber =
+	PartNumber(Manufacturer("CTR"), number)
+
+fun Gbrake(number: String): PartNumber =
+	PartNumber(Manufacturer("G-brake"), number)
+
+fun Nisshinbo(number: String): PartNumber =
+	PartNumber(Manufacturer("Nisshinbo"), number)
+
+fun Nissin(number: String): PartNumber =
+	PartNumber(Manufacturer("Nissin"), number)
+
+fun NTN(number: String): PartNumber =
+	PartNumber(Manufacturer("NTN"), number)
+
+fun Five(number: String): PartNumber =
+	PartNumber(Manufacturer("NTN"), number)
 //endregion
 
 //region Date Extension
