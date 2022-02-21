@@ -28,6 +28,9 @@ private val itemModifier = Modifier
 	.wrapContentHeight()
 	.padding(horizontal = 16.dp, vertical = 4.dp)
 
+private val Service.resolveElevation: Dp
+	get() = if (summary.origin == 0) 0.dp else 6.dp
+
 @Composable
 fun ServiceItemComposable(service: Service, onCardClick: () -> Unit, expanded: Boolean) {
 	if (expanded) {
@@ -45,7 +48,7 @@ fun ServiceMaxItemComposable(service: Service, onCardClick: () -> Unit) {
 		header = { ServiceHeader(service) },
 		item = { OrderItemComposable(it) },
 		footer = { ServiceFooter(service) },
-		elevation = 6.dp,
+		elevation = service.resolveElevation,
 		onCardClick = onCardClick
 	)
 }
@@ -54,7 +57,7 @@ fun ServiceMaxItemComposable(service: Service, onCardClick: () -> Unit) {
 fun ServiceMiniItemComposable(service: Service, onCardClick: () -> Unit) {
 	Card(
 		modifier = itemModifier,
-		elevation = 6.dp
+		elevation = service.resolveElevation
 	) {
 		Box(
 			modifier = Modifier
