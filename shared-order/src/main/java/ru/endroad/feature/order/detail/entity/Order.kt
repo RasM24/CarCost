@@ -13,5 +13,7 @@ data class Order(
 
 		fun format(): String =
 			"$origin RUB"
+
+		operator fun plus(cost: Cost): Cost = Cost(this.origin + cost.origin)
 	}
 }

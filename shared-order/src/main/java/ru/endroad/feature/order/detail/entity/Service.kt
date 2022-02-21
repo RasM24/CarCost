@@ -12,8 +12,8 @@ data class Service(
 	val date: Date?,
 ) {
 
-	val summary: Cost
-		get() = orders.sumOf { it.cost.origin }.let(::Cost)
+	private val workPayCost get() = workPay.cost ?: Cost(0)
+	val summary: Cost get() = orders.sumOf { it.cost.origin }.let(::Cost) + workPayCost
 
 	@JvmInline
 	value class Mileage(val origin: Int) {
