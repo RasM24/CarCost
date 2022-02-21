@@ -1,5 +1,7 @@
 package ru.endroad.feature.order.list
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,7 +29,16 @@ private val itemModifier = Modifier
 	.padding(horizontal = 16.dp, vertical = 4.dp)
 
 @Composable
-fun ServiceItemComposable(service: Service) {
+fun ServiceItemComposable(service: Service, onCardClick: () -> Unit, expanded: Boolean) {
+	if (expanded) {
+		ServiceMaxItemComposable(service, onCardClick = onCardClick)
+	} else {
+		ServiceMiniItemComposable(service, onCardClick = onCardClick)
+	}
+}
+
+@Composable
+fun ServiceMaxItemComposable(service: Service, onCardClick: () -> Unit) {
 	GroupedCard(
 		modifier = itemModifier,
 		dataList = service.orders,
@@ -35,7 +46,34 @@ fun ServiceItemComposable(service: Service) {
 		item = { OrderItemComposable(it) },
 		footer = { ServiceFooter(service) },
 		elevation = 6.dp,
+		onCardClick = onCardClick
 	)
+}
+
+@Composable
+fun ServiceMiniItemComposable(service: Service, onCardClick: () -> Unit) {
+	Card(
+		modifier = itemModifier,
+		elevation = 6.dp
+	) {
+		Box(
+			modifier = Modifier
+				.fillMaxWidth()
+				.clickable(onClick = { onCardClick() })
+		)
+		{
+
+			Column {
+				Hole(16.dp)
+				ServiceHeader(service)
+				Hole(8.dp)
+				Divider(modifier = Modifier.padding(horizontal = 16.dp), color = Color.Gray, thickness = 2.dp) //TODO ColorHardcode
+				Hole(24.dp)
+				ServiceMiniFooter(service)
+				Hole(24.dp)
+			}
+		}
+	}
 }
 
 @Composable
@@ -61,6 +99,15 @@ private fun ServiceFooter(service: Service) {
 }
 
 @Composable
+private fun ServiceMiniFooter(service: Service) {
+	Row(modifier = Modifier.padding(horizontal = 16.dp)) {
+		PrimaryText(modifier = Modifier.weight(10f), text = service.workPay.master, maxLines = 1)
+		Spacer(modifier = Modifier.weight(1f))
+		PrimaryText(modifier = Modifier.wrapContentWidth(), text = service.summary.format())
+	}
+}
+
+@Composable
 fun PurchaseItemComposable(title: String, orders: List<Order>) {
 	GroupedCard(
 		modifier = itemModifier,
@@ -68,6 +115,7 @@ fun PurchaseItemComposable(title: String, orders: List<Order>) {
 		header = { TitleText(modifier = Modifier.padding(horizontal = 16.dp), text = title) },
 		item = { OrderItemComposable(it) },
 		elevation = 0.dp,
+		onCardClick = {}
 	)
 }
 
@@ -92,37 +140,45 @@ private fun <T> GroupedCard(
 	item: @Composable (T) -> Unit,
 	footer: (@Composable () -> Unit)? = null,
 	elevation: Dp = 1.dp,
+	onCardClick: () -> Unit,
 ) {
 	Card(
 		modifier = modifier,
 		elevation = elevation
 	) {
 
-		Column {
-			Hole(16.dp)
-
-			if (header != null) {
-				header()
-				Hole(8.dp)
-				Divider(modifier = Modifier.padding(horizontal = 16.dp), color = Color.Gray, thickness = 2.dp) //TODO ColorHardcode
-				Hole(24.dp)
-			}
-
-			dataList.forEachIndexed { index, data ->
+		Box(
+			modifier = Modifier
+				.fillMaxWidth()
+				.clickable(onClick = { onCardClick() })
+		)
+		{
+			Column {
 				Hole(16.dp)
 
-				item(data)
+				if (header != null) {
+					header()
+					Hole(8.dp)
+					Divider(modifier = Modifier.padding(horizontal = 16.dp), color = Color.Gray, thickness = 2.dp) //TODO ColorHardcode
+					Hole(24.dp)
+				}
 
-				Hole(16.dp)
-				if (index != dataList.lastIndex) Divider(startIndent = 16.dp)
-			}
+				dataList.forEachIndexed { index, data ->
+					Hole(16.dp)
 
-			if (footer != null) {
-				Hole(8.dp)
-				Divider(modifier = Modifier.padding(horizontal = 16.dp), color = Color.Gray, thickness = 1.dp) //TODO ColorHardcode
-				Hole(16.dp)
-				footer()
-				Hole(24.dp)
+					item(data)
+
+					Hole(16.dp)
+					if (index != dataList.lastIndex) Divider(startIndent = 16.dp)
+				}
+
+				if (footer != null) {
+					Hole(8.dp)
+					Divider(modifier = Modifier.padding(horizontal = 16.dp), color = Color.Gray, thickness = 1.dp) //TODO ColorHardcode
+					Hole(16.dp)
+					footer()
+					Hole(24.dp)
+				}
 			}
 		}
 	}

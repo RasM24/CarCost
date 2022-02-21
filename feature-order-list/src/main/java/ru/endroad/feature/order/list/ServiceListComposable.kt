@@ -1,9 +1,11 @@
 package ru.endroad.feature.order.list
 
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import ru.endroad.feature.order.detail.entity.Order
 import ru.endroad.feature.order.detail.entity.Service
@@ -40,6 +42,8 @@ private fun ServiceListComposable(
 	zip: List<Order>,
 	onBackClicked: () -> Unit
 ) {
+	val expandedCardIds = remember { mutableStateListOf<Int>() }
+
 	Scaffold(topBar = flatTopBar(title = title, navigationClick = onBackClicked)) {
 		LazyColumn {
 			item { Hole(12.dp) }
@@ -48,9 +52,15 @@ private fun ServiceListComposable(
 
 			item { PurchaseItemComposable(title = "ZIP", orders = zip) }
 
-			items(services) { service -> ServiceItemComposable(service) }
+			itemsIndexed(services) { index, service ->
+				ServiceItemComposable(service, onCardClick = { expandedCardIds.switchExpanded(index) }, expanded = expandedCardIds.contains(index))
+			}
 
 			item { Hole(12.dp) }
 		}
 	}
+}
+
+private fun MutableList<Int>.switchExpanded(index: Int) {
+	if (contains(index)) remove(index) else add(index)
 }
