@@ -32,15 +32,19 @@ import ru.endroad.feature.order.detail.dsl.Shell
 import ru.endroad.feature.order.detail.dsl.Vic
 import ru.endroad.feature.order.detail.dsl.km
 import ru.endroad.feature.order.detail.entity.AutoAtlant
+import ru.endroad.feature.order.detail.entity.AutoMarket
 import ru.endroad.feature.order.detail.entity.AutoNahodka
-import ru.endroad.feature.order.detail.entity.Autoatlant
+import ru.endroad.feature.order.detail.entity.Carbonado
 import ru.endroad.feature.order.detail.entity.Denderov
 import ru.endroad.feature.order.detail.entity.Exist
 import ru.endroad.feature.order.detail.entity.Hokkaido
 import ru.endroad.feature.order.detail.entity.Kornet
+import ru.endroad.feature.order.detail.entity.OffHand
 import ru.endroad.feature.order.detail.entity.Sakura
+import ru.endroad.feature.order.detail.entity.Spectr
 import ru.endroad.feature.order.detail.entity.Standart
 import ru.endroad.feature.order.detail.entity.Undefined
+import ru.endroad.feature.order.detail.entity.VostokComplect
 import ru.endroad.shared.autopart.base.Part
 
 object HardcoreDataStepwgn {
@@ -87,7 +91,7 @@ object HardcoreDataStepwgn {
 	private val hubRearLeft = Part("Ступица сборе [Left]", Honda("Contract"))   //ступица левая 4_200.RUB
 	private val antherRearLeft = Part("Пыльник привода [Rear][Left]", Honda("Contract"))   //пыльник 300.RUB
 	private val rearSprings = Part("Пружины [Rear] x2", Honda("Contract"))   //пружины   1_600.RUB
-	private val wiperBlade = Part("Дворники [Front]")   //дворники 800.RUB
+	private val wiperBlade = Part("Дворники [Front]", LynxAuto(""))   //дворники 800.RUB
 	private val rearUpperArm = Part("Верхний рычаг х2", Honda("Contract"))   //верхний рычаг 2_000.RUB
 
 	internal val serviceBook = ServiceBookDsl {
@@ -96,25 +100,32 @@ object HardcoreDataStepwgn {
 			Exist("К3-0011656") part bushLateralControlArm boughtFor 1_380.RUB
 			Exist("К3-0011656") part bushRearShockAbsorber boughtFor 636.RUB
 			Exist("К3-0011656") part bushRearUpperArm boughtFor 590.RUB
-			Exist("К3-0011656") part bushFrontLowerArm2 boughtFor 946.RUB
 			Exist("К3-0011606") part caliperRepairKitRear boughtFor 744.RUB
 			Exist("К3-0011656") part hubBearingRear boughtFor 4_080.RUB
+			Exist("К3-0011606") part caliperRepairKitFront boughtFor 744.RUB
+			Exist("К3-0011606") part hubBearingFront boughtFor 3_774.RUB
+			Exist("К3-0011656") part ballBearing boughtFor 1_748.RUB
+			Exist("К3-0011656") part tieRodEnd boughtFor 2_844.RUB
+			Exist("К3-0011656") part tieRod boughtFor 2_432.RUB
+			Exist("К3-0011656") part stabilizerLink boughtFor 1_214.RUB
 			//endregion
 
-			Exist("К3-0011656") part tieRodEnd boughtFor 2_844.RUB
-			Exist("К3-0011656") part stabilizerLink boughtFor 1_214.RUB
-			Exist("К3-0011656") part stabilizerBush boughtFor 544.RUB
-			Exist("К3-0011656") part ballBearing boughtFor 1_748.RUB
-			Exist("К3-0011656") part tieRod boughtFor 2_432.RUB
-			Exist("К3-0011656") part bushFrontLowerArm1 boughtFor 812.RUB
-			Exist("К3-0011606") part caliperRepairKitFront boughtFor 744.RUB
-			Exist("К3-0011606") part brakeDiskFront boughtFor 5_668.RUB
-			Exist("К3-0011606") part brakePadFront boughtFor 3_876.RUB
-			Exist("К3-0011606") part hubBearingFront boughtFor 3_774.RUB
-
-			Autoatlant() part hydraulicOil boughtFor 601.RUB
+			AutoAtlant() part hydraulicOil boughtFor 601.RUB
 			Exist("К3 0002934") part filterCabin boughtFor 857.RUB
 			Exist("К3 0002934") part gasketVtecValve boughtFor 674.RUB
+		}
+
+		service(mileage = 35428.km, date = 20 February 2022, workPay = Denderov(4350.RUB)) {
+			Exist("К3-0011606") part brakeDiskFront boughtFor 5_668.RUB
+			Exist("К3-0011606") part brakePadFront boughtFor 3_876.RUB
+			Exist("К3-0011656") part stabilizerBush boughtFor 544.RUB
+			Exist("К3-0011656") part bushFrontLowerArm1 boughtFor 812.RUB
+			Exist("К3-0011656") part bushFrontLowerArm2 boughtFor 946.RUB
+			Carbonado() part "Болты колесные".Undefined boughtFor 1300.RUB
+			VostokComplect() part "Нижние рычаги [Front]".Honda boughtFor 3600.RUB
+			AutoMarket() part "Стойки передние в сборе".Honda boughtFor 4600.RUB
+			OffHand() part "Прокачка стоек".Undefined boughtFor 400.RUB
+			Spectr() part "Пыльники + отбойники на стойки".Lynx boughtFor 900.RUB
 		}
 
 		service(mileage = 354184.km, date = 13 February 2022, workPay = Denderov(6000.RUB)) {
@@ -131,7 +142,7 @@ object HardcoreDataStepwgn {
 
 		service(mileage = 353367.km, date = 26 January 2022) {
 			Hokkaido("Drom: 149-413-20") part seatFront boughtFor 24000.RUB
-			Autoatlant() part profoam4000 boughtFor 496.RUB
+			AutoAtlant() part profoam4000 boughtFor 496.RUB
 		}
 
 		service(mileage = 351400.km, date = 25 December 2021, workPay = Denderov(2000.RUB)) {
@@ -140,7 +151,7 @@ object HardcoreDataStepwgn {
 			Exist("К3-0002934") part filterOil boughtFor 437.RUB
 			Exist("К3-0002934") part filterAir boughtFor 755.RUB
 			Exist("К3-0010855") part sensorOilPressure boughtFor 572.RUB
-			Autoatlant() part mobil0w30 boughtFor 3_706.RUB
+			AutoAtlant() part mobil0w30 boughtFor 3_706.RUB
 		}
 
 		//region Сервисная книжка прошлого владельца

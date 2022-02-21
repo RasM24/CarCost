@@ -6,7 +6,9 @@ import ru.endroad.feature.order.detail.entity.Receipt
 import ru.endroad.feature.order.detail.entity.Service
 import ru.endroad.feature.order.detail.entity.ServiceBook
 import ru.endroad.feature.order.detail.entity.WorkPay
+import ru.endroad.shared.autopart.base.Manufacturer
 import ru.endroad.shared.autopart.base.Part
+import ru.endroad.shared.autopart.base.PartNumber
 
 object ServiceBookDsl : (ServiceBookDsl.() -> Unit) -> ServiceBook {
 
@@ -36,6 +38,15 @@ object ServiceBookDsl : (ServiceBookDsl.() -> Unit) -> ServiceBook {
 	}
 
 	infix fun Receipt.part(part: Part): Pair<Receipt, Part> = Pair(this, part)
+
+	val String.Honda: Part
+		get() = Part(this, Honda("Contract"))
+
+	val String.Lynx: Part
+		get() = Part(this, LynxAuto(""))
+
+	val String.Undefined: Part
+		get() = Part(this, PartNumber(Manufacturer(""), ""))
 }
 
 class ServiceDsl(
