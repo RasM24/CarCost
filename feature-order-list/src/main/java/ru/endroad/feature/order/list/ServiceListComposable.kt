@@ -16,6 +16,7 @@ fun StepwgnServiceComposable(onBackClicked: () -> Unit) {
 		title = "Сервисная книжка [StepWGN]",
 		services = HardcoreDataStepwgn.serviceBook.services,
 		orders = HardcoreDataStepwgn.serviceBook.purchasedPart,
+		zip = HardcoreDataStepwgn.serviceBook.zipPart,
 		onBackClicked = onBackClicked,
 	)
 }
@@ -26,6 +27,7 @@ fun CivicServiceComposable(onBackClicked: () -> Unit) {
 		title = "Сервисная книжка [Civic]",
 		services = HardcoreDataCivic.serviceBook.services,
 		orders = HardcoreDataCivic.serviceBook.purchasedPart,
+		zip = HardcoreDataCivic.serviceBook.zipPart,
 		onBackClicked = onBackClicked,
 	)
 }
@@ -35,13 +37,16 @@ private fun ServiceListComposable(
 	title: String,
 	services: List<Service>,
 	orders: List<Order>,
+	zip: List<Order>,
 	onBackClicked: () -> Unit
 ) {
 	Scaffold(topBar = flatTopBar(title = title, navigationClick = onBackClicked)) {
 		LazyColumn {
 			item { Hole(12.dp) }
 
-			item { PurchaseItemComposable(orders = orders) }
+			item { PurchaseItemComposable(title = "Закуп", orders = orders) }
+
+			item { PurchaseItemComposable(title = "ZIP", orders = zip) }
 
 			items(services) { service -> ServiceItemComposable(service) }
 

@@ -14,10 +14,11 @@ object ServiceBookDsl : (ServiceBookDsl.() -> Unit) -> ServiceBook {
 
 	private val services = mutableListOf<Service>()
 	private val purchasedPart = mutableListOf<Order>()
+	private val zipPart = mutableListOf<Order>()
 
 	override fun invoke(dsl: ServiceBookDsl.() -> Unit): ServiceBook {
 		this.dsl()
-		return ServiceBook(services, purchasedPart)
+		return ServiceBook(services, purchasedPart, zipPart)
 	}
 
 	fun service(
@@ -35,6 +36,12 @@ object ServiceBookDsl : (ServiceBookDsl.() -> Unit) -> ServiceBook {
 		PurchaseDsl()
 			.invoke(body)
 			.let(purchasedPart::addAll)
+	}
+
+	fun zip(body: PurchaseDsl.() -> Unit) {
+		PurchaseDsl()
+			.invoke(body)
+			.let(zipPart::addAll)
 	}
 
 	infix fun Receipt.part(part: Part): Pair<Receipt, Part> = Pair(this, part)

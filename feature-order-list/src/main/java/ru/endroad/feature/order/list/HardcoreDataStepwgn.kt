@@ -105,8 +105,11 @@ object HardcoreDataStepwgn {
 			Rulevoy() part "Фильтр АКПП, проточный".Undefined boughtFor 1_465.RUB
 			KrasTuning() part "Пламегаситель".Undefined boughtFor 2_100.RUB
 			KrasTuning() part "МиниКатализатор (обманка)".Undefined boughtFor 900.RUB
+			Exist("К3 0002934") part filterCabin boughtFor 857.RUB
+			AutoAtlant() part hydraulicOil boughtFor 601.RUB
+		}
 
-			//region zip
+		zip {
 			Exist("К3-0011656") part bushLateralControlArm boughtFor 1_380.RUB
 			Exist("К3-0011656") part bushRearShockAbsorber boughtFor 636.RUB
 			Exist("К3-0011656") part bushRearUpperArm boughtFor 590.RUB
@@ -118,13 +121,7 @@ object HardcoreDataStepwgn {
 			Exist("К3-0011656") part tieRodEnd boughtFor 2_844.RUB
 			Exist("К3-0011656") part tieRod boughtFor 2_432.RUB
 			Exist("К3-0011656") part stabilizerLink boughtFor 1_214.RUB
-			//endregion
-
-			//region old
-			AutoAtlant() part hydraulicOil boughtFor 601.RUB
-			Exist("К3 0002934") part filterCabin boughtFor 857.RUB
 			Exist("К3 0002934") part gasketVtecValve boughtFor 674.RUB
-			//endregion
 		}
 
 		service(mileage = 35428.km, date = 20 February 2022, workPay = Denderov(5000.RUB)) {

@@ -61,10 +61,11 @@ private fun ServiceFooter(service: Service) {
 }
 
 @Composable
-fun PurchaseItemComposable(orders: List<Order>) {
+fun PurchaseItemComposable(title: String, orders: List<Order>) {
 	GroupedCard(
 		modifier = itemModifier,
 		dataList = orders,
+		header = { TitleText(modifier = Modifier.padding(horizontal = 16.dp), text = title) },
 		item = { OrderItemComposable(it) },
 		elevation = 0.dp,
 	)
