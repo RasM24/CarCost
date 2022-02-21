@@ -32,6 +32,7 @@ import ru.endroad.feature.order.detail.dsl.Shell
 import ru.endroad.feature.order.detail.dsl.Vic
 import ru.endroad.feature.order.detail.dsl.km
 import ru.endroad.feature.order.detail.entity.AutoAtlant
+import ru.endroad.feature.order.detail.entity.AutoLegion
 import ru.endroad.feature.order.detail.entity.AutoMarket
 import ru.endroad.feature.order.detail.entity.AutoNahodka
 import ru.endroad.feature.order.detail.entity.Carbonado
@@ -39,11 +40,14 @@ import ru.endroad.feature.order.detail.entity.Denderov
 import ru.endroad.feature.order.detail.entity.Exist
 import ru.endroad.feature.order.detail.entity.Hokkaido
 import ru.endroad.feature.order.detail.entity.Kornet
+import ru.endroad.feature.order.detail.entity.KrasTuning
 import ru.endroad.feature.order.detail.entity.OffHand
+import ru.endroad.feature.order.detail.entity.Rulevoy
 import ru.endroad.feature.order.detail.entity.Sakura
 import ru.endroad.feature.order.detail.entity.Spectr
 import ru.endroad.feature.order.detail.entity.Standart
 import ru.endroad.feature.order.detail.entity.Undefined
+import ru.endroad.feature.order.detail.entity.VostokAuto25
 import ru.endroad.feature.order.detail.entity.VostokComplect
 import ru.endroad.shared.autopart.base.Part
 
@@ -96,6 +100,12 @@ object HardcoreDataStepwgn {
 
 	internal val serviceBook = ServiceBookDsl {
 		purchase {
+			Rulevoy() part "Масло АКПП, Honda ATF Z1".Honda boughtFor 5_500.RUB //TODO глянуть точную цену
+			Rulevoy() part "DPSF".Honda boughtFor 2_000.RUB //TODO  глянуть точную цену
+			Rulevoy() part "Фильтр АКПП, проточный".Undefined boughtFor 1_465.RUB
+			KrasTuning() part "Пламегаситель".Undefined boughtFor 2_100.RUB
+			KrasTuning() part "МиниКатализатор (обманка)".Undefined boughtFor 900.RUB
+
 			//region zip
 			Exist("К3-0011656") part bushLateralControlArm boughtFor 1_380.RUB
 			Exist("К3-0011656") part bushRearShockAbsorber boughtFor 636.RUB
@@ -110,12 +120,14 @@ object HardcoreDataStepwgn {
 			Exist("К3-0011656") part stabilizerLink boughtFor 1_214.RUB
 			//endregion
 
+			//region old
 			AutoAtlant() part hydraulicOil boughtFor 601.RUB
 			Exist("К3 0002934") part filterCabin boughtFor 857.RUB
 			Exist("К3 0002934") part gasketVtecValve boughtFor 674.RUB
+			//endregion
 		}
 
-		service(mileage = 35428.km, date = 20 February 2022, workPay = Denderov(4350.RUB)) {
+		service(mileage = 35428.km, date = 20 February 2022, workPay = Denderov(5000.RUB)) {
 			Exist("К3-0011606") part brakeDiskFront boughtFor 5_668.RUB
 			Exist("К3-0011606") part brakePadFront boughtFor 3_876.RUB
 			Exist("К3-0011656") part stabilizerBush boughtFor 544.RUB
@@ -136,8 +148,12 @@ object HardcoreDataStepwgn {
 			Sakura() part hubRearLeft boughtFor 4_200.RUB
 			AutoNahodka() part rearSprings boughtFor 1_600.RUB
 			AutoNahodka() part rearUpperArm boughtFor 2_000.RUB
-			Undefined() part antherRearLeft boughtFor 300.RUB
-			Undefined() part wiperBlade boughtFor 1_200.RUB
+			OffHand() part antherRearLeft boughtFor 300.RUB
+		}
+
+		service(mileage = 354184.km, date = 12 February 2022) {
+			AutoLegion() part wiperBlade boughtFor 1_200.RUB
+			VostokAuto25() part "Сидения, 2 и 3 ряд".Honda boughtFor 13_700.RUB
 		}
 
 		service(mileage = 353367.km, date = 26 January 2022) {
